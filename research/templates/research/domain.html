@@ -1,4 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
 <h1>{{ domain.domain_name }}</h1>
+<img src={{ domain.domain_logo.url }}>
 {% if domain.project_set.all %}
 <ul>
     {% for project in domain.project_set.all %}
@@ -11,3 +14,4 @@
     <p>There is no project under this research topic!</p>
 
 {% endif %}
+{% endblock %}

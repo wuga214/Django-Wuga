@@ -3,10 +3,16 @@ from __future__ import unicode_literals
 
 from django.db import models
 from markdownx.models import MarkdownxField
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 
 class Domain(models.Model):
     domain_name = models.CharField(max_length=100)
+    domain_logo = ProcessedImageField(blank=True,
+                                      processors=[ResizeToFill(100, 200)],
+                                      format='JPEG',
+                                      options={'quality': 60})
 
     def __str__(self):
         return self.domain_name
