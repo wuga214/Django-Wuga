@@ -1,0 +1,13 @@
+<h1>{{ domain.domain_name }}</h1>
+{% if domain.project_set.all %}
+<ul>
+    {% for project in domain.project_set.all %}
+        <li>
+        <a href="{% url 'research:project' project.id %}">{{ project.project_name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+    <p>There is no project under this research topic!</p>
+
+{% endif %}

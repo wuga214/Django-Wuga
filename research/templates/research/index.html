@@ -1,0 +1,7 @@
+<ul>
+{% for domain in domain_list %}
+<li>
+    <a href="{% url 'research:domain' domain.id %}">{{ domain.domain_name }}</a>
+</li>
+{% endfor %}
+</ul>
