@@ -10,7 +10,7 @@ from imagekit.processors import ResizeToFill
 class Domain(models.Model):
     domain_name = models.CharField(max_length=100)
     domain_logo = ProcessedImageField(blank=True,
-                                      processors=[ResizeToFill(100, 200)],
+                                      processors=[ResizeToFill(300, 300)],
                                       format='JPEG',
                                       options={'quality': 60})
 
