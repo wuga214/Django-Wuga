@@ -5,6 +5,7 @@ from django.db import models
 from markdownx.models import MarkdownxField
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
+from markdownx.utils import markdownify
 
 
 class Domain(models.Model):
@@ -30,6 +31,11 @@ class Project(models.Model):
     project_type = models.CharField(max_length=3, choices=PROJECT_CATEGORY, default='RD')
     project_short_description = models.CharField(max_length=200)
     project_long_description = MarkdownxField()
+
+    # Create a property that returns the markdown instead
+    @property
+    def formatted_long_description(self):
+        return markdownify(self.project_long_description)
 
     def __str__(self):
         return self.project_name
