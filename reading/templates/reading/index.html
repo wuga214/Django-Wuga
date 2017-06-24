@@ -38,14 +38,12 @@
             <div id="collapse{{ paper.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ paper.pk }}">
             {% endif %}
                 <div class="panel-body">
-                    <div class="well well-lg well-transparent">
+                    <div class="well-sm well-transparent">
                         <div class="btn-group" role="group" aria-label="...">
                             <a class="btn btn-success" href="{{ paper.link }}">Paper Link</a>
                             <a class="btn btn-info">{{ paper.get_category_display }}</a>
                             <a class="btn btn-default">{{ paper.time }}</a>
                         </div>
-                    </div>
-                    <div class="well well-lg">
                         <h4>
                             Abstract
                         </h4>
@@ -57,7 +55,7 @@
         {% endfor %}
     </div>
 {% else %}
-    <p>There is no paper under this research topic!</p>
+    <p>There is no paper under this reading list!</p>
 {% endif %}
 </div>
 </div>

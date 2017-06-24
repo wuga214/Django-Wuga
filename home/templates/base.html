@@ -2,12 +2,15 @@
 <html lang="en">
 {% load static %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
 <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}" />
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wuga</title>
+    <link rel="icon"
+      type="image/x-icon"
+      href="{% static 'home/images/wuga.ico' %}" />
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -45,13 +48,13 @@
 
     </div>
 </nav>
-<div class="container jumbotron">
+<div class="container">
         {% block content %}
         {% endblock %}
 </div>
  <!-- Footer -->
-    <footer>
-        <div class="container">
+    <footer class="navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
                     <ul class="list-inline text-center">
