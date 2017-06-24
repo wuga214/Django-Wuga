@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="row">
 {% if photos %}
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
       {% for photo in photos  %}
-          {% if photo.pk == 1 %}
-            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          {% if forloop.first %}
+            <li data-target="#carousel-example-generic" data-slide-to={{ forloop.counter0 }} class="active"></li>
           {% else %}
-            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to={{ forloop.counter0 }}></li>
           {% endif %}
       {% endfor %}
   </ol>
@@ -16,7 +17,7 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
       {% for photo in photos  %}
-          {% if photo.pk == 1 %}
+          {% if forloop.first %}
             <div class="item active">
               <img src={{ photo.photo.url }} alt="...">
               <div class="carousel-caption">
@@ -48,4 +49,26 @@
 {% else %}
     <p>No photos</p>
 {% endif %}
+</div>
+
+    <!-- What's up -->
+<div class="row">
+<div class="panel panel-default">
+  <div class="panel-heading">
+      What's up! ( <span class="glyphicon glyphicon-tower"></span> represents current status )
+  </div>
+  <div class="panel-body">
+    <ul class="list-group">
+        {% for article in news %}
+  <li class="list-group-item">
+      {{ article.description }} - {{ article.time }} - {{ article.location }}
+        {% if article.status %}
+      <span class="glyphicon glyphicon-tower"></span>
+      {% endif %}
+  </li>
+        {% endfor %}
+    </ul>
+  </div>
+</div>
+</div>
 {% endblock %}

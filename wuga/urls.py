@@ -23,4 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^research/', include('research.urls')),
     url(r'^markdownx/', include('markdownx.urls')),
+    url(r'^reading/', include('reading.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

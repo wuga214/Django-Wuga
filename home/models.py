@@ -2,12 +2,15 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.datetime_safe import datetime
 from imagekit.processors import ResizeToFill
 from imagekit.models import ProcessedImageField
 
 
 class Whatsup(models.Model):
     description = models.CharField(max_length=200)
+    location = models.CharField(max_length=100)
+    status = models.BooleanField(default=False)
     time = models.DateField()
 
     def __str__(self):
@@ -19,7 +22,7 @@ class Photowall(models.Model):
     time = models.DateField()
     description = models.CharField(max_length=200)
     photo = ProcessedImageField(blank=True,
-                                processors=[ResizeToFill(959, 450)],
+                                processors=[ResizeToFill(1170, 450)],
                                 format='JPEG',
                                 options={'quality': 72})
 

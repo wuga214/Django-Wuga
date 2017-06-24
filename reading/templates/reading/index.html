@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row top-buffer">
+<div class="col-md-3 col-sm-3">
+    <div class="well well-sm">
+        <h3>
+            Category
+        </h3>
+        <div class="list-group">
+            {% for category in categories %}
+                {% if category.0 == selected_category %}
+                    <a href="#" class="list-group-item active">
+                        {{ category.1 }}
+                    </a>
+                {% else %}
+                    <a href="{% url 'reading:category' category.0 %}" class="list-group-item">{{ category.1 }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="col-md-9 col-sm-9">
+    {% if papers %}
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        {% for paper in papers.all %}
+        <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading{{ paper.pk }}">
+                <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ paper.id }}" aria-expanded="false" aria-controls="collapse{{ paper.id }}">
+                {{ paper.title }}
+                </a>
+                </h4>
+            </div>
+            {% if forloop.first %}
+            <div id="collapse{{ paper.id }}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{{ paper.pk }}">
+            {% else %}
+            <div id="collapse{{ paper.id }}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{ paper.pk }}">
+            {% endif %}
+                <div class="panel-body">
+                    <div class="well well-lg well-transparent">
+                        <div class="btn-group" role="group" aria-label="...">
+                            <a class="btn btn-success" href="{{ paper.link }}">Paper Link</a>
+                            <a class="btn btn-info">{{ paper.get_category_display }}</a>
+                            <a class="btn btn-default">{{ paper.time }}</a>
+                        </div>
+                    </div>
+                    <div class="well well-lg">
+                        <h4>
+                            Abstract
+                        </h4>
+                        {{ paper.abstract }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>There is no paper under this research topic!</p>
+{% endif %}
+</div>
+</div>
+{% endblock %}

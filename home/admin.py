@@ -12,3 +12,4 @@ class PhotowallAdmin(admin.ModelAdmin):
 
 admin.site.register(Photowall, PhotowallAdmin)
 admin.site.register(Whatsup)
+admin.site.site_header = 'Wuga Admin System'
