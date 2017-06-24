@@ -1,1 +1,23 @@
-<h1>{{ project.project_name }}</h1>
+{% extends "base.html" %}
+{% block content %}
+<div class="blog-header">
+  <div class="container">
+    <h1 class="blog-title">{{ project.project_name }}</h1>
+    <p class="lead blog-description">{{ project.project_short_description }}</p>
+  </div>
+</div>
+<div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+            {{ project.formatted_long_description|safe }}
+        </div>
+          <div class="col-sm-3 offset-sm-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+              <h4>Tags</h4>
+              <p>
+                  ...
+              </p>
+          </div>
+      </div>
+</div>
+{% endblock %}

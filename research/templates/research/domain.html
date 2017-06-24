@@ -1,13 +1,37 @@
-<h1>{{ domain.domain_name }}</h1>
-{% if domain.project_set.all %}
-<ul>
-    {% for project in domain.project_set.all %}
-        <li>
-        <a href="{% url 'research:project' project.id %}">{{ project.project_name }}</a>
-        </li>
-    {% endfor %}
-</ul>
-{% else %}
-    <p>There is no project under this research topic!</p>
+{% extends "base.html" %}
+{% block content %}
 
-{% endif %}
+<div class="row">
+    <div class="col-sm-4 col-md-4">
+        <div class="thumbnail">
+            <img src={{ domain.domain_logo.url }} alt="...">
+            <div class="caption">
+            <h3>{{ domain.domain_name }}</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">Projects</div>
+            <div class="panel-body">
+            {% if domain.project_set.all %}
+            <ul class="media-list">
+                {% for project in domain.project_set.all %}
+                    <li class="media">
+                    <div class="media-body">
+                        <h4 class="media-heading">
+                            <a href="{% url 'research:project' project.id %}" >{{ project.project_name }}</a>
+                        </h4>
+                        <p>{{ project.project_short_description }}</p>
+                    </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <p>There is no project under this research topic!</p>
+            {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
