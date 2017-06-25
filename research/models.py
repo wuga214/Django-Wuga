@@ -21,10 +21,7 @@ class Domain(models.Model):
 
 class Project(models.Model):
     PROJECT_CATEGORY = (
-        ('DL', "Deep Learning"),
-        ('PGM', "Probabilistic Graphical Model"),
-        ('CO', "Convex Optimization"),
-        ('RD', "Random Exploration"),
+        ('ST', "Something"),
     )
     domain = models.ForeignKey(Domain, on_delete=models.CASCADE)
     project_name = models.CharField(max_length=100)

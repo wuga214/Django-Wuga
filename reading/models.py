@@ -6,10 +6,7 @@ from django.db import models
 
 class Paper(models.Model):
     PAPER_CATEGORY = (
-        ('DL', "Deep Learning"),
-        ('PGM', "Probabilistic Graphical Model"),
-        ('CO', "Convex Optimization"),
-        ('RD', "Random Exploration"),
+        ('ST', "Something"),
     )
     title = models.CharField(max_length=100)
     time = models.DateField()
@@ -23,10 +20,7 @@ class Paper(models.Model):
 
 class WebPage(models.Model):
     PAGE_CATEGORY = (
-        ('DL', "Deep Learning"),
-        ('PGM', "Probabilistic Graphical Model"),
-        ('CO', "Convex Optimization"),
-        ('RD', "Random Exploration"),
+        ('ST', "Something"),
     )
     PAGE_TYPE = (
         ('TT', "Tutorial"),

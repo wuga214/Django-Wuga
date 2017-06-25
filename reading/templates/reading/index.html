@@ -56,7 +56,9 @@
         {% endfor %}
     </div>
 {% else %}
-    <p>There is no paper under this reading list!</p>
+        <div class="alert alert-warning" role="alert">
+            There is no paper under this reading list.
+        </div>
 {% endif %}
 
 <div class="list-group">
@@ -74,7 +76,9 @@
             </ul>
         {% endfor %}
     {% else %}
-        <p>There is no webpage to share under this reading list!</p>
+        <div class="alert alert-warning" role="alert">
+        There is no webpage to share under this reading list!
+        </div>
     {% endif %}
 </div>
 

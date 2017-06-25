@@ -52,6 +52,8 @@
 {% endfor %}
     </div>
 {% else %}
-Sorry, we are not able to find your profile, please upload it through admin management.
+<div class="alert alert-danger" role="alert">
+    Oh shit! we are not able to find your profile, if you didn't upload, please upload it through admin management.
+</div>
 {% endif %}
 {% endblock %}
