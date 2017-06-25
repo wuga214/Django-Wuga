@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if profiles %}
+    <div class="row">
+{% for profile in profiles %}
+    <div class="col-sm-4 col-md-4 col-lg-3 well-sm">
+    <div class="thumbnail">
+        <img src="{{ profile.photo.url }}">
+        <div class="caption well-sm">
+            <address>
+              <strong>{{ profile.occupation }}</strong><br>
+              {{ profile.address }}<br>
+              <abbr title="Phone">P:</abbr> {{ profile.phone }}
+            </address>
+
+            <address>
+              <strong>{{ profile.name }}</strong><br>
+              <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+            </address>
+        </div>
+    </div>
+    </div>
+    <div class="col-sm-8 col-md-8 col-lg-9 well-sm">
+        <div class="well">
+            {{ profile.formatted_biography|safe }}
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Publications</div>
+
+                <div class="list-group">
+                    {% if profile.publication_set %}
+                        {% for publication in profile.publication_set.all %}
+                            <ul class="list-group-item">
+                                <h4>{{ publication.title }}</h4>
+                                <h5>Publisher: {{ publication.get_publisher_display }}</h5>
+                                <h5>Coauthors: {{ publication.coauthors }}</h5>
+                                <div class="btn-group" role="group" aria-label="...">
+                                    <a class="btn btn-success" href="{{ publication.paper_link }}">Link</a>
+                                    <a class="btn btn-primary" href="{{ publication.code_link }}">Code</a>
+                                    <a class="btn btn-info" href="{{ publication.presentation_link }}">Slides</a>
+                                    <a class="btn btn-default">{{ publication.time.year }}</a>
+                                </div>
+                            </ul>
+                        {% endfor %}
+                    {% else %}
+                        <p>There is no webpage to share under this reading list!</p>
+                    {% endif %}
+                </div>
+
+        </div>
+    </div>
+{% endfor %}
+    </div>
+{% else %}
+Sorry, we are not able to find your profile, please upload it through admin management.
+{% endif %}
+{% endblock %}

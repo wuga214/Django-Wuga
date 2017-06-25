@@ -36,8 +36,13 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav">
-                <li class="{% block reading_active %}{% endblock %}"><a href="{% url 'reading:index' %}">
+                <li class="{% block reading_list %}{% endblock %}"><a href="{% url 'reading:index' %}">
                     <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>&nbsp; Reading List</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="{% block about_me %}{% endblock %}"><a href="{% url 'about:index' %}">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp; About Me</a>
                 </li>
             </ul>
 {#            <form class="navbar-form navbar-left" role="search" method="get" action="{% url 'research:index' %}">#}
@@ -54,6 +59,10 @@
         {% block content %}
         {% endblock %}
 </div>
+<div class="container well-lg">
+</div>
+<div class="container well-lg">
+</div>
  <!-- Footer -->
     <footer class="navbar-inverse navbar-fixed-bottom">
         <div class="container-fluid">
@@ -61,26 +70,26 @@
                 <div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2">
                     <ul class="list-inline text-center">
                         <li>
-                            <a href="#">
+                            <a href="https://www.linkedin.com/in/mrwuga/">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                    <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </li>
                         <li>
-                            <a href="#">
-                                <span class="fa-stack fa-lg">
-                                    <i class="fa fa-circle fa-stack-2x"></i>
-                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
+                            <a href="https://github.com/wuga214">
                                 <span class="fa-stack fa-lg">
                                     <i class="fa fa-circle fa-stack-2x"></i>
                                     <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="weixin://dl/chat?wugasama">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-weixin fa-stack-1x fa-inverse"></i>
                                 </span>
                             </a>
                         </li>

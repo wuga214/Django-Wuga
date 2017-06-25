@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'research.apps.ResearchConfig',
     'reading.apps.ReadingConfig',
+    'about.apps.AboutConfig',
     'markdownx',
 ]
 
